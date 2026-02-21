@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shortcuts</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #0f0f23;
+      --card-bg: #16213e;
+      --card-hover: #1a2744;
+      --header-bg: #1a1a2e;
+      --text: #e0e0e0;
+      --text-secondary: #8892a4;
+      --text-muted: #555b6e;
+      --border: #2a2a4a;
+      --accent: #4a90d9;
+      --radius: 6px;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      font-size: 14px;
+      line-height: 1.4;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+    }
+
+    /* ===== HEADER ===== */
+    .header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      height: 40px;
+      background: var(--header-bg);
+      display: flex;
+      align-items: center;
+      padding: 0 12px;
+      border-bottom: 1px solid var(--border);
+      backdrop-filter: blur(12px);
+      gap: 10px;
+    }
+
+    .header-icon {
+      width: 16px;
+      height: 16px;
+      color: var(--accent);
+    }
+
+    .header-title {
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: -0.3px;
+      color: var(--text);
+    }
+
+    /* ===== CATEGORIES GRID ===== */
+    .categories {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 10px;
+      padding: 10px;
+    }
+
+    /* ===== CATEGORY CARD ===== */
+    .category-card {
+      background: var(--card-bg);
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+      overflow: hidden;
+      animation: fadeIn 0.2s ease;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(6px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .category-accent {
+      height: 2px;
+      width: 100%;
+    }
+
+    .category-header {
+      padding: 5px 8px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .category-name {
+      font-size: 12px;
+      font-weight: 600;
+      flex: 1;
+      padding: 2px 4px;
+      min-width: 0;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    /* ===== SHORTCUT ITEM ===== */
+    .shortcut-item {
+      padding: 4px 8px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      border-bottom: 1px solid rgba(42, 42, 74, 0.3);
+      transition: background 0.12s;
+      min-height: 28px;
+    }
+
+    .shortcut-item:last-child { border-bottom: none; }
+    .shortcut-item:hover { background: var(--card-hover); }
+
+    .shortcut-content {
+      flex: 1;
+      min-width: 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+    }
+
+    .shortcut-desc {
+      font-size: 11px;
+      color: var(--text-secondary);
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      flex-shrink: 1;
+      min-width: 0;
+    }
+
+    .shortcut-keys {
+      display: flex;
+      align-items: center;
+      gap: 0;
+      flex-wrap: nowrap;
+      flex-shrink: 0;
+    }
+
+    /* ===== KEY BADGES ===== */
+    .key-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 2px;
+      padding: 0px 5px;
+      border-radius: 3px;
+      font-size: 10px;
+      font-weight: 600;
+      line-height: 18px;
+      min-width: 18px;
+      justify-content: center;
+      box-shadow: 0 1px 1px rgba(0,0,0,0.2), inset 0 1px 0 rgba(255,255,255,0.06);
+      white-space: nowrap;
+    }
+
+    .key-badge.mod-cmd { background: #4a90d9; color: #fff; border: 1px solid #5a9fe9; }
+    .key-badge.mod-ctrl { background: #e06c75; color: #fff; border: 1px solid #f07c85; }
+    .key-badge.mod-alt { background: #e5c07b; color: #1a1a2e; border: 1px solid #f5d08b; }
+    .key-badge.mod-shift { background: #98c379; color: #1a1a2e; border: 1px solid #a8d389; }
+    .key-badge.mod-fn { background: #c678dd; color: #fff; border: 1px solid #d688ed; }
+    .key-badge.regular { background: #2a2a4a; color: #c8c8c8; border: 1px solid #3a3a5a; }
+
+    .key-sep {
+      color: var(--text-muted);
+      font-size: 8px;
+      margin: 0 2px;
+      font-weight: 500;
+    }
+
+    .command-badge {
+      font-family: 'SF Mono', 'Fira Code', Consolas, monospace;
+      color: #61afef;
+      background: #2a2a4a;
+      padding: 0px 6px;
+      border-radius: 3px;
+      font-size: 10px;
+      border: 1px solid #3a3a5a;
+      display: inline-block;
+      line-height: 18px;
+    }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 800px) {
+      .categories { grid-template-columns: 1fr; padding: 12px; gap: 12px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="app">
+    <header class="header">
+      <svg class="header-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="2" y="4" width="20" height="16" rx="2"/>
+        <line x1="6" y1="8" x2="6" y2="8"/><line x1="10" y1="8" x2="10" y2="8"/>
+        <line x1="14" y1="8" x2="14" y2="8"/><line x1="18" y1="8" x2="18" y2="8"/>
+        <line x1="6" y1="12" x2="6" y2="12"/><line x1="18" y1="12" x2="18" y2="12"/>
+        <line x1="8" y1="16" x2="16" y2="16"/>
+        <line x1="10" y1="12" x2="14" y2="12"/>
+      </svg>
+      <h1 class="header-title">Shortcuts</h1>
+    </header>
+    <main class="categories" id="categoriesContainer"></main>
+  </div>
+
+  <script>
+    // ===== SHORTCUTS DATA =====
+    // This is the single source of truth. To modify shortcuts, ask Claude to edit this section.
+    const SHORTCUTS_DATA = {
+      "categories": [
+        {
+          "name": "Xcode",
+          "color": "#4a90d9",
+          "items": [
+            { "description": "Build project", "keys": { "modifiers": ["Cmd"], "key": "B" } },
+            { "description": "Run project", "keys": { "modifiers": ["Cmd"], "key": "R" } },
+            { "description": "Stop running", "keys": { "modifiers": ["Cmd"], "key": "." } },
+            { "description": "Open quickly", "keys": { "modifiers": ["Cmd", "Shift"], "key": "O" } },
+            { "description": "Show/hide navigator", "keys": { "modifiers": ["Cmd"], "key": "0" } },
+            { "description": "Show/hide debug area", "keys": { "modifiers": ["Cmd", "Shift"], "key": "Y" } },
+            { "description": "Show/hide inspector", "keys": { "modifiers": ["Cmd", "Alt"], "key": "0" } },
+            { "description": "Clean build folder", "keys": { "modifiers": ["Cmd", "Shift"], "key": "K" } },
+            { "description": "Jump to definition", "keys": { "modifiers": ["Ctrl", "Cmd"], "key": "J" } },
+            { "description": "Find in project", "keys": { "modifiers": ["Cmd", "Shift"], "key": "F" } },
+            { "description": "Toggle breakpoint", "keys": { "modifiers": ["Cmd"], "key": "\\" } },
+            { "description": "Step over", "keys": { "modifiers": ["Fn"], "key": "F6" } },
+            { "description": "Step into", "keys": { "modifiers": ["Fn"], "key": "F7" } },
+            { "description": "Continue execution", "keys": { "modifiers": ["Ctrl", "Cmd"], "key": "Y" } }
+          ]
+        },
+        {
+          "name": "Claude Code",
+          "color": "#c678dd",
+          "items": [
+            { "description": "Show help", "command": "/help" },
+            { "description": "Clear conversation", "command": "/clear" },
+            { "description": "Review a pull request", "command": "/review-pr" },
+            { "description": "Accept pending edits", "keys": { "modifiers": ["Cmd"], "key": "Y" } },
+            { "description": "Reject pending edits", "keys": { "modifiers": ["Cmd"], "key": "N" } },
+            { "description": "Start new conversation", "command": "/clear" },
+            { "description": "Toggle plan mode", "keys": { "modifiers": ["Cmd", "Shift"], "key": "P" } },
+            { "description": "Interrupt generation", "keys": { "modifiers": [], "key": "Esc" } }
+          ]
+        },
+        {
+          "name": "VSCode",
+          "color": "#56b6c2",
+          "items": [
+            { "description": "Toggle terminal", "keys": { "modifiers": ["Ctrl"], "key": "`" } },
+            { "description": "Quick open file", "keys": { "modifiers": ["Cmd"], "key": "P" } },
+            { "description": "Command palette", "keys": { "modifiers": ["Cmd", "Shift"], "key": "P" } },
+            { "description": "Find in files", "keys": { "modifiers": ["Cmd", "Shift"], "key": "F" } },
+            { "description": "Go to symbol", "keys": { "modifiers": ["Cmd", "Shift"], "key": "O" } },
+            { "description": "Go to line", "keys": { "modifiers": ["Ctrl"], "key": "G" } },
+            { "description": "Toggle sidebar", "keys": { "modifiers": ["Cmd"], "key": "B" } },
+            { "description": "Split editor", "keys": { "modifiers": ["Cmd"], "key": "\\" } },
+            { "description": "Close tab", "keys": { "modifiers": ["Cmd"], "key": "W" } },
+            { "description": "Zen mode", "keys": { "modifiers": ["Cmd"], "key": "K Z" } },
+            { "description": "Multi-cursor select", "keys": { "modifiers": ["Alt"], "key": "Click" } },
+            { "description": "Rename symbol", "keys": { "modifiers": ["Fn"], "key": "F2" } }
+          ]
+        },
+        {
+          "name": "Git",
+          "color": "#e06c75",
+          "items": [
+            { "description": "Stage all and commit", "command": "git add -A && git commit -m \"msg\"" },
+            { "description": "Amend last commit", "command": "git commit --amend" },
+            { "description": "Interactive rebase", "command": "git rebase -i HEAD~3" },
+            { "description": "Stash changes", "command": "git stash" },
+            { "description": "Pop stash", "command": "git stash pop" },
+            { "description": "View log (oneline)", "command": "git log --oneline -20" },
+            { "description": "Diff staged", "command": "git diff --staged" },
+            { "description": "Create branch", "command": "git checkout -b name" },
+            { "description": "Force push (careful!)", "command": "git push --force-with-lease" }
+          ]
+        },
+        {
+          "name": "Terminal",
+          "color": "#98c379",
+          "items": [
+            { "description": "Clear screen", "keys": { "modifiers": ["Ctrl"], "key": "L" } },
+            { "description": "Cancel command", "keys": { "modifiers": ["Ctrl"], "key": "C" } },
+            { "description": "End of input", "keys": { "modifiers": ["Ctrl"], "key": "D" } },
+            { "description": "Search history", "keys": { "modifiers": ["Ctrl"], "key": "R" } },
+            { "description": "Move to line start", "keys": { "modifiers": ["Ctrl"], "key": "A" } },
+            { "description": "Move to line end", "keys": { "modifiers": ["Ctrl"], "key": "E" } },
+            { "description": "Delete word backward", "keys": { "modifiers": ["Ctrl"], "key": "W" } },
+            { "description": "Suspend process", "keys": { "modifiers": ["Ctrl"], "key": "Z" } }
+          ]
+        },
+        {
+          "name": "macOS",
+          "color": "#e5c07b",
+          "items": [
+            { "description": "Spotlight search", "keys": { "modifiers": ["Cmd"], "key": "Space" } },
+            { "description": "Force quit apps", "keys": { "modifiers": ["Cmd", "Alt"], "key": "Esc" } },
+            { "description": "Screenshot (area)", "keys": { "modifiers": ["Cmd", "Shift"], "key": "4" } },
+            { "description": "Screenshot (window)", "keys": { "modifiers": ["Cmd", "Shift"], "key": "4 Space" } },
+            { "description": "Lock screen", "keys": { "modifiers": ["Ctrl", "Cmd"], "key": "Q" } },
+            { "description": "Show desktop", "keys": { "modifiers": ["Fn"], "key": "F11" } },
+            { "description": "Mission Control", "keys": { "modifiers": ["Ctrl"], "key": "Up" } },
+            { "description": "Switch app", "keys": { "modifiers": ["Cmd"], "key": "Tab" } },
+            { "description": "Close window", "keys": { "modifiers": ["Cmd"], "key": "W" } },
+            { "description": "Quit app", "keys": { "modifiers": ["Cmd"], "key": "Q" } },
+            { "description": "Minimize window", "keys": { "modifiers": ["Cmd"], "key": "M" } }
+          ]
+        },
+        {
+          "name": "Vim",
+          "color": "#d19a66",
+          "items": [
+            { "description": "Enter insert mode", "command": "i" },
+            { "description": "Exit insert mode", "command": "Esc" },
+            { "description": "Save file", "command": ":w" },
+            { "description": "Save and quit", "command": ":wq" },
+            { "description": "Quit without saving", "command": ":q!" },
+            { "description": "Delete line", "command": "dd" },
+            { "description": "Yank (copy) line", "command": "yy" },
+            { "description": "Paste after cursor", "command": "p" },
+            { "description": "Undo", "command": "u" },
+            { "description": "Redo", "keys": { "modifiers": ["Ctrl"], "key": "R" } },
+            { "description": "Search forward", "command": "/pattern" },
+            { "description": "Search backward", "command": "?pattern" },
+            { "description": "Go to line N", "command": ":N" },
+            { "description": "Go to file start", "command": "gg" },
+            { "description": "Go to file end", "command": "G" },
+            { "description": "Visual select", "command": "v" },
+            { "description": "Visual line select", "command": "V" },
+            { "description": "Visual block select", "keys": { "modifiers": ["Ctrl"], "key": "V" } }
+          ]
+        },
+        {
+          "name": "Docker",
+          "color": "#56b6c2",
+          "items": [
+            { "description": "List running containers", "command": "docker ps" },
+            { "description": "List all containers", "command": "docker ps -a" },
+            { "description": "Stop container", "command": "docker stop <id>" },
+            { "description": "Remove container", "command": "docker rm <id>" },
+            { "description": "Build image", "command": "docker build -t name ." },
+            { "description": "Run container", "command": "docker run -d -p 8080:80 name" },
+            { "description": "View logs", "command": "docker logs -f <id>" },
+            { "description": "Shell into container", "command": "docker exec -it <id> sh" },
+            { "description": "Compose up", "command": "docker compose up -d" },
+            { "description": "Compose down", "command": "docker compose down" }
+          ]
+        },
+        {
+          "name": "Safari",
+          "color": "#4a90d9",
+          "items": [
+            { "description": "New tab", "keys": { "modifiers": ["Cmd"], "key": "T" } },
+            { "description": "Close tab", "keys": { "modifiers": ["Cmd"], "key": "W" } },
+            { "description": "Reopen closed tab", "keys": { "modifiers": ["Cmd", "Shift"], "key": "T" } },
+            { "description": "Open Web Inspector", "keys": { "modifiers": ["Cmd", "Alt"], "key": "I" } },
+            { "description": "Toggle Reader Mode", "keys": { "modifiers": ["Cmd", "Shift"], "key": "R" } },
+            { "description": "Show all tabs", "keys": { "modifiers": ["Cmd", "Shift"], "key": "\\" } }
+          ]
+        },
+        {
+          "name": "Figma",
+          "color": "#be5046",
+          "items": [
+            { "description": "Zoom to fit", "keys": { "modifiers": ["Cmd"], "key": "1" } },
+            { "description": "Zoom to selection", "keys": { "modifiers": ["Cmd"], "key": "2" } },
+            { "description": "Frame selection", "keys": { "modifiers": ["Cmd", "Alt"], "key": "G" } },
+            { "description": "Group selection", "keys": { "modifiers": ["Cmd"], "key": "G" } },
+            { "description": "Toggle grid", "keys": { "modifiers": ["Ctrl"], "key": "G" } }
+          ]
+        }
+      ]
+    };
+
+    // ===== RENDER LOGIC =====
+    const MODIFIER_STYLES = {
+      Cmd:   { symbol: '\u2318', cls: 'mod-cmd' },
+      Ctrl:  { symbol: '\u2303', cls: 'mod-ctrl' },
+      Alt:   { symbol: '\u2325', cls: 'mod-alt' },
+      Shift: { symbol: '\u21E7', cls: 'mod-shift' },
+      Fn:    { symbol: 'fn', cls: 'mod-fn' },
+    };
+
+    function esc(str) {
+      const d = document.createElement('div');
+      d.textContent = str || '';
+      return d.innerHTML;
+    }
+
+    function renderKeyBadges(keys) {
+      const parts = [];
+      for (const mod of (keys.modifiers || [])) {
+        const s = MODIFIER_STYLES[mod];
+        if (s) parts.push(`<span class="key-badge ${s.cls}" title="${mod}">${s.symbol}</span>`);
+      }
+      if (keys.key) {
+        parts.push(`<span class="key-badge regular">${esc(keys.key)}</span>`);
+      }
+      return parts.join('<span class="key-sep">+</span>');
+    }
+
+    function renderItem(item) {
+      let keysHTML = '';
+      if (item.keys && ((item.keys.modifiers && item.keys.modifiers.length > 0) || item.keys.key)) {
+        keysHTML = renderKeyBadges(item.keys);
+      }
+      if (item.command) {
+        if (keysHTML) keysHTML += '<span class="key-sep" style="margin:0 6px">/</span>';
+        keysHTML += `<span class="command-badge">${esc(item.command)}</span>`;
+      }
+
+      return `
+        <div class="shortcut-item">
+          <div class="shortcut-content">
+            <div class="shortcut-desc" title="${esc(item.description)}">${esc(item.description)}</div>
+            ${keysHTML ? '<div class="shortcut-keys">' + keysHTML + '</div>' : ''}
+          </div>
+        </div>`;
+    }
+
+    function renderCategory(cat) {
+      return `
+        <div class="category-card">
+          <div class="category-accent" style="background:${cat.color}"></div>
+          <div class="category-header">
+            <span class="category-name">${esc(cat.name)}</span>
+          </div>
+          <div class="shortcut-list">
+            ${cat.items.map(item => renderItem(item)).join('')}
+          </div>
+        </div>`;
+    }
+
+    function render() {
+      document.getElementById('categoriesContainer').innerHTML =
+        SHORTCUTS_DATA.categories.map(renderCategory).join('');
+    }
+
+    render();
+  </script>
+</body>
+</html>

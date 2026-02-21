@@ -8,19 +8,18 @@ A single-file, static HTML page that displays keyboard shortcuts and commands or
 - **No server, no build step, no dependencies.** Open the file directly in a browser.
 - Shortcut data lives inline in the `SHORTCUTS_DATA` JavaScript object inside `index.html`.
 - The page is read-only — there is no UI to edit shortcuts. All modifications are done by asking Claude to edit `index.html`.
+- Hosted via GitHub Pages at https://adrienconrath.github.io/shortcuts/
 
 ## Modifying shortcuts
 
-Use the `/shortcuts` skill to add, remove, or modify shortcuts. Examples:
+Ask Claude to edit the `SHORTCUTS_DATA` object in `index.html`. Examples:
 
-```
-/shortcuts add Cmd+Shift+F "Find and replace" to Xcode
-/shortcuts remove "Stage all and commit" from Git
-/shortcuts add category "Terminal" with color teal
-/shortcuts list
-```
+- "Add Cmd+Shift+F Find and replace to Xcode"
+- "Remove Stage all and commit from Git"
+- "Add a new Terminal category with color teal"
+- "List all current shortcuts"
 
-The skill edits the `SHORTCUTS_DATA` object in `index.html` directly using the Edit tool.
+Always read `index.html` first, then use the Edit tool to modify just the `SHORTCUTS_DATA` object.
 
 ## Data format
 

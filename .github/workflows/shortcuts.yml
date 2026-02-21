@@ -1,0 +1,48 @@
+name: Update Shortcuts
+on:
+  issues:
+    types: [opened]
+
+jobs:
+  update-shortcuts:
+    if: contains(github.event.issue.labels.*.name, 'shortcut')
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      issues: write
+      pull-requests: write
+      id-token: write
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: anthropics/claude-code-action@v1
+        with:
+          anthropic_api_key: ${{ secrets.ANTHROPIC_API_KEY }}
+          prompt: |
+            You are managing a shortcuts cheat sheet. The file `index.html` contains
+            a `SHORTCUTS_DATA` JavaScript object with all shortcut categories and items.
+
+            Read the CLAUDE.md and .claude/skills/shortcuts/SKILL.md for full context
+            on the data format and how to make changes.
+
+            The user has requested the following change via a GitHub issue:
+
+            TITLE: ${{ github.event.issue.title }}
+            BODY: ${{ github.event.issue.body }}
+
+            Please:
+            1. Read index.html to see the current SHORTCUTS_DATA
+            2. Make the requested changes using the Edit tool
+            3. Commit and push the changes
+            4. Close the issue with a comment summarizing what was changed
+
+            Use these commands to commit and close:
+            ```
+            git add index.html
+            git commit -m "Update shortcuts: <brief description>"
+            git push
+            gh issue close ${{ github.event.issue.number }} --comment "Done: <summary of changes>"
+            ```
+
+          claude_args: |
+            --allowedTools "Read,Edit,Bash(git add:*),Bash(git commit:*),Bash(git push:*),Bash(gh issue:*)"

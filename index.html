@@ -219,18 +219,28 @@
           "items": [
             { "description": "Build project", "keys": { "modifiers": ["Cmd"], "key": "B" } },
             { "description": "Run project", "keys": { "modifiers": ["Cmd"], "key": "R" } },
+            { "description": "Run tests", "keys": { "modifiers": ["Cmd"], "key": "U" } },
+            { "description": "Profile app", "keys": { "modifiers": ["Cmd"], "key": "I" } },
             { "description": "Stop running", "keys": { "modifiers": ["Cmd"], "key": "." } },
             { "description": "Open quickly", "keys": { "modifiers": ["Cmd", "Shift"], "key": "O" } },
+            { "description": "Find in project", "keys": { "modifiers": ["Cmd", "Shift"], "key": "F" } },
+            { "description": "Find and replace", "keys": { "modifiers": ["Cmd", "Alt"], "key": "F" } },
             { "description": "Show/hide navigator", "keys": { "modifiers": ["Cmd"], "key": "0" } },
             { "description": "Show/hide debug area", "keys": { "modifiers": ["Cmd", "Shift"], "key": "Y" } },
             { "description": "Show/hide inspector", "keys": { "modifiers": ["Cmd", "Alt"], "key": "0" } },
+            { "description": "Show library", "keys": { "modifiers": ["Cmd", "Shift"], "key": "L" } },
             { "description": "Clean build folder", "keys": { "modifiers": ["Cmd", "Shift"], "key": "K" } },
             { "description": "Jump to definition", "keys": { "modifiers": ["Ctrl", "Cmd"], "key": "J" } },
-            { "description": "Find in project", "keys": { "modifiers": ["Cmd", "Shift"], "key": "F" } },
+            { "description": "Edit all in scope", "keys": { "modifiers": ["Ctrl", "Cmd"], "key": "E" } },
+            { "description": "Re-indent code", "keys": { "modifiers": ["Ctrl"], "key": "I" } },
+            { "description": "Add documentation", "keys": { "modifiers": ["Cmd", "Alt"], "key": "/" } },
+            { "description": "Code fold", "keys": { "modifiers": ["Cmd", "Alt"], "key": "Left" } },
+            { "description": "Code unfold", "keys": { "modifiers": ["Cmd", "Alt"], "key": "Right" } },
             { "description": "Toggle breakpoint", "keys": { "modifiers": ["Cmd"], "key": "\\" } },
             { "description": "Step over", "keys": { "modifiers": ["Fn"], "key": "F6" } },
             { "description": "Step into", "keys": { "modifiers": ["Fn"], "key": "F7" } },
-            { "description": "Continue execution", "keys": { "modifiers": ["Ctrl", "Cmd"], "key": "Y" } }
+            { "description": "Continue execution", "keys": { "modifiers": ["Ctrl", "Cmd"], "key": "Y" } },
+            { "description": "Show SwiftUI preview", "keys": { "modifiers": ["Cmd", "Alt"], "key": "P" } }
           ]
         },
         {
@@ -239,59 +249,51 @@
           "items": [
             { "description": "Show help", "command": "/help" },
             { "description": "Clear conversation", "command": "/clear" },
+            { "description": "Compact conversation", "command": "/compact" },
+            { "description": "Toggle fast mode", "command": "/fast" },
+            { "description": "Commit changes", "command": "/commit" },
             { "description": "Review a pull request", "command": "/review-pr" },
+            { "description": "Initialize project", "command": "/init" },
+            { "description": "View cost & stats", "command": "/cost" },
+            { "description": "Manage memory", "command": "/memory" },
             { "description": "Accept pending edits", "keys": { "modifiers": ["Cmd"], "key": "Y" } },
             { "description": "Reject pending edits", "keys": { "modifiers": ["Cmd"], "key": "N" } },
-            { "description": "Start new conversation", "command": "/clear" },
             { "description": "Toggle plan mode", "keys": { "modifiers": ["Cmd", "Shift"], "key": "P" } },
-            { "description": "Interrupt generation", "keys": { "modifiers": [], "key": "Esc" } }
+            { "description": "Toggle autoaccept", "keys": { "modifiers": ["Shift"], "key": "Tab" } },
+            { "description": "Interrupt generation", "keys": { "modifiers": [], "key": "Esc" } },
+            { "description": "Undo last edit", "keys": { "modifiers": ["Cmd"], "key": "Z" } }
           ]
         },
         {
           "name": "VSCode",
           "color": "#56b6c2",
           "items": [
-            { "description": "Toggle terminal", "keys": { "modifiers": ["Ctrl"], "key": "`" } },
             { "description": "Quick open file", "keys": { "modifiers": ["Cmd"], "key": "P" } },
             { "description": "Command palette", "keys": { "modifiers": ["Cmd", "Shift"], "key": "P" } },
+            { "description": "Toggle terminal", "keys": { "modifiers": ["Ctrl"], "key": "`" } },
             { "description": "Find in files", "keys": { "modifiers": ["Cmd", "Shift"], "key": "F" } },
             { "description": "Go to symbol", "keys": { "modifiers": ["Cmd", "Shift"], "key": "O" } },
             { "description": "Go to line", "keys": { "modifiers": ["Ctrl"], "key": "G" } },
+            { "description": "Go to definition", "keys": { "modifiers": ["Fn"], "key": "F12" } },
+            { "description": "Peek definition", "keys": { "modifiers": ["Alt"], "key": "F12" } },
+            { "description": "Quick fix", "keys": { "modifiers": ["Cmd"], "key": "." } },
+            { "description": "Toggle comment", "keys": { "modifiers": ["Cmd"], "key": "/" } },
+            { "description": "Format document", "keys": { "modifiers": ["Alt", "Shift"], "key": "F" } },
+            { "description": "Rename symbol", "keys": { "modifiers": ["Fn"], "key": "F2" } },
+            { "description": "Move line up/down", "keys": { "modifiers": ["Alt"], "key": "Up/Down" } },
+            { "description": "Duplicate line", "keys": { "modifiers": ["Alt", "Shift"], "key": "Down" } },
+            { "description": "Delete line", "keys": { "modifiers": ["Cmd", "Shift"], "key": "K" } },
+            { "description": "Multi-cursor select", "keys": { "modifiers": ["Alt"], "key": "Click" } },
+            { "description": "Add cursor above/below", "keys": { "modifiers": ["Cmd", "Alt"], "key": "Up/Down" } },
+            { "description": "Select all occurrences", "keys": { "modifiers": ["Cmd", "Shift"], "key": "L" } },
             { "description": "Toggle sidebar", "keys": { "modifiers": ["Cmd"], "key": "B" } },
             { "description": "Split editor", "keys": { "modifiers": ["Cmd"], "key": "\\" } },
             { "description": "Close tab", "keys": { "modifiers": ["Cmd"], "key": "W" } },
-            { "description": "Zen mode", "keys": { "modifiers": ["Cmd"], "key": "K Z" } },
-            { "description": "Multi-cursor select", "keys": { "modifiers": ["Alt"], "key": "Click" } },
-            { "description": "Rename symbol", "keys": { "modifiers": ["Fn"], "key": "F2" } }
-          ]
-        },
-        {
-          "name": "Git",
-          "color": "#e06c75",
-          "items": [
-            { "description": "Stage all and commit", "command": "git add -A && git commit -m \"msg\"" },
-            { "description": "Amend last commit", "command": "git commit --amend" },
-            { "description": "Interactive rebase", "command": "git rebase -i HEAD~3" },
-            { "description": "Stash changes", "command": "git stash" },
-            { "description": "Pop stash", "command": "git stash pop" },
-            { "description": "View log (oneline)", "command": "git log --oneline -20" },
-            { "description": "Diff staged", "command": "git diff --staged" },
-            { "description": "Create branch", "command": "git checkout -b name" },
-            { "description": "Force push (careful!)", "command": "git push --force-with-lease" }
-          ]
-        },
-        {
-          "name": "Terminal",
-          "color": "#98c379",
-          "items": [
-            { "description": "Clear screen", "keys": { "modifiers": ["Ctrl"], "key": "L" } },
-            { "description": "Cancel command", "keys": { "modifiers": ["Ctrl"], "key": "C" } },
-            { "description": "End of input", "keys": { "modifiers": ["Ctrl"], "key": "D" } },
-            { "description": "Search history", "keys": { "modifiers": ["Ctrl"], "key": "R" } },
-            { "description": "Move to line start", "keys": { "modifiers": ["Ctrl"], "key": "A" } },
-            { "description": "Move to line end", "keys": { "modifiers": ["Ctrl"], "key": "E" } },
-            { "description": "Delete word backward", "keys": { "modifiers": ["Ctrl"], "key": "W" } },
-            { "description": "Suspend process", "keys": { "modifiers": ["Ctrl"], "key": "Z" } }
+            { "description": "Toggle word wrap", "keys": { "modifiers": ["Alt"], "key": "Z" } },
+            { "description": "Fold region", "keys": { "modifiers": ["Cmd", "Alt"], "key": "[" } },
+            { "description": "Unfold region", "keys": { "modifiers": ["Cmd", "Alt"], "key": "]" } },
+            { "description": "Open settings", "keys": { "modifiers": ["Cmd"], "key": "," } },
+            { "description": "Zen mode", "keys": { "modifiers": ["Cmd"], "key": "K Z" } }
           ]
         },
         {
@@ -300,78 +302,26 @@
           "items": [
             { "description": "Spotlight search", "keys": { "modifiers": ["Cmd"], "key": "Space" } },
             { "description": "Force quit apps", "keys": { "modifiers": ["Cmd", "Alt"], "key": "Esc" } },
+            { "description": "Screenshot (full)", "keys": { "modifiers": ["Cmd", "Shift"], "key": "3" } },
             { "description": "Screenshot (area)", "keys": { "modifiers": ["Cmd", "Shift"], "key": "4" } },
             { "description": "Screenshot (window)", "keys": { "modifiers": ["Cmd", "Shift"], "key": "4 Space" } },
+            { "description": "Screen recording", "keys": { "modifiers": ["Cmd", "Shift"], "key": "5" } },
+            { "description": "Emoji picker", "keys": { "modifiers": ["Ctrl", "Cmd"], "key": "Space" } },
             { "description": "Lock screen", "keys": { "modifiers": ["Ctrl", "Cmd"], "key": "Q" } },
             { "description": "Show desktop", "keys": { "modifiers": ["Fn"], "key": "F11" } },
             { "description": "Mission Control", "keys": { "modifiers": ["Ctrl"], "key": "Up" } },
             { "description": "Switch app", "keys": { "modifiers": ["Cmd"], "key": "Tab" } },
+            { "description": "Switch same app windows", "keys": { "modifiers": ["Cmd"], "key": "`" } },
+            { "description": "Hide current app", "keys": { "modifiers": ["Cmd"], "key": "H" } },
+            { "description": "Toggle full screen", "keys": { "modifiers": ["Ctrl", "Cmd"], "key": "F" } },
             { "description": "Close window", "keys": { "modifiers": ["Cmd"], "key": "W" } },
             { "description": "Quit app", "keys": { "modifiers": ["Cmd"], "key": "Q" } },
-            { "description": "Minimize window", "keys": { "modifiers": ["Cmd"], "key": "M" } }
-          ]
-        },
-        {
-          "name": "Vim",
-          "color": "#d19a66",
-          "items": [
-            { "description": "Enter insert mode", "command": "i" },
-            { "description": "Exit insert mode", "command": "Esc" },
-            { "description": "Save file", "command": ":w" },
-            { "description": "Save and quit", "command": ":wq" },
-            { "description": "Quit without saving", "command": ":q!" },
-            { "description": "Delete line", "command": "dd" },
-            { "description": "Yank (copy) line", "command": "yy" },
-            { "description": "Paste after cursor", "command": "p" },
-            { "description": "Undo", "command": "u" },
-            { "description": "Redo", "keys": { "modifiers": ["Ctrl"], "key": "R" } },
-            { "description": "Search forward", "command": "/pattern" },
-            { "description": "Search backward", "command": "?pattern" },
-            { "description": "Go to line N", "command": ":N" },
-            { "description": "Go to file start", "command": "gg" },
-            { "description": "Go to file end", "command": "G" },
-            { "description": "Visual select", "command": "v" },
-            { "description": "Visual line select", "command": "V" },
-            { "description": "Visual block select", "keys": { "modifiers": ["Ctrl"], "key": "V" } }
-          ]
-        },
-        {
-          "name": "Docker",
-          "color": "#56b6c2",
-          "items": [
-            { "description": "List running containers", "command": "docker ps" },
-            { "description": "List all containers", "command": "docker ps -a" },
-            { "description": "Stop container", "command": "docker stop <id>" },
-            { "description": "Remove container", "command": "docker rm <id>" },
-            { "description": "Build image", "command": "docker build -t name ." },
-            { "description": "Run container", "command": "docker run -d -p 8080:80 name" },
-            { "description": "View logs", "command": "docker logs -f <id>" },
-            { "description": "Shell into container", "command": "docker exec -it <id> sh" },
-            { "description": "Compose up", "command": "docker compose up -d" },
-            { "description": "Compose down", "command": "docker compose down" }
-          ]
-        },
-        {
-          "name": "Safari",
-          "color": "#4a90d9",
-          "items": [
-            { "description": "New tab", "keys": { "modifiers": ["Cmd"], "key": "T" } },
-            { "description": "Close tab", "keys": { "modifiers": ["Cmd"], "key": "W" } },
-            { "description": "Reopen closed tab", "keys": { "modifiers": ["Cmd", "Shift"], "key": "T" } },
-            { "description": "Open Web Inspector", "keys": { "modifiers": ["Cmd", "Alt"], "key": "I" } },
-            { "description": "Toggle Reader Mode", "keys": { "modifiers": ["Cmd", "Shift"], "key": "R" } },
-            { "description": "Show all tabs", "keys": { "modifiers": ["Cmd", "Shift"], "key": "\\" } }
-          ]
-        },
-        {
-          "name": "Figma",
-          "color": "#be5046",
-          "items": [
-            { "description": "Zoom to fit", "keys": { "modifiers": ["Cmd"], "key": "1" } },
-            { "description": "Zoom to selection", "keys": { "modifiers": ["Cmd"], "key": "2" } },
-            { "description": "Frame selection", "keys": { "modifiers": ["Cmd", "Alt"], "key": "G" } },
-            { "description": "Group selection", "keys": { "modifiers": ["Cmd"], "key": "G" } },
-            { "description": "Toggle grid", "keys": { "modifiers": ["Ctrl"], "key": "G" } }
+            { "description": "Minimize window", "keys": { "modifiers": ["Cmd"], "key": "M" } },
+            { "description": "Open preferences", "keys": { "modifiers": ["Cmd"], "key": "," } },
+            { "description": "Show/hide hidden files", "keys": { "modifiers": ["Cmd", "Shift"], "key": "." } },
+            { "description": "Quick Look", "keys": { "modifiers": [], "key": "Space" } },
+            { "description": "Get info (Finder)", "keys": { "modifiers": ["Cmd"], "key": "I" } },
+            { "description": "Delete file (Finder)", "keys": { "modifiers": ["Cmd"], "key": "Backspace" } }
           ]
         }
       ]

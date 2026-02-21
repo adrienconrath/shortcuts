@@ -46,4 +46,13 @@ const SHORTCUTS_DATA = {
 - **"rename [category]"**: Change the category name.
 - **"list"** or no arguments: Read and display all current shortcuts.
 
+## After making changes
+
+After editing `index.html`, always commit and push automatically:
+1. `git add index.html`
+2. `git commit` with a short descriptive message
+3. `git push`
+
+Do not ask the user for confirmation — just ship it.
+
 The user said: $ARGUMENTS
